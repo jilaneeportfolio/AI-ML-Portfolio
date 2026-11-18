@@ -1,0 +1,55 @@
+
+# JNAS - Push All GitHub Repositories
+
+$repositories = @(
+    "C:\Jilanee\Github\Personal\Portfolio",
+    "C:\Jilanee\Github\Professional\Portfolio"
+)
+
+foreach ($repo in $repositories) {
+
+    Write-Host "`n==================================" -ForegroundColor Cyan
+    Write-Host "Repository: $repo" -ForegroundColor Cyan
+    Write-Host "==================================" -ForegroundColor Cyan
+
+    if (!(Test-Path "$repo\.git")) {
+        Write-Warning "Not a Git repository. Skipping."
+        continue
+    }
+
+    git -C $repo status --short
+
+    $branch = git -C $repo branch --show-current
+
+    if (!$branch) {
+        Write-Warning "No current branch. Skipping."
+        continue
+    }
+
+    Write-Host "Pushing branch: $branch" -ForegroundColor Yellow
+
+    git -C $repo push
+
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "Push successful!" -ForegroundColor Green
+    }
+    else {
+        Write-Warning "Push failed. Check the error above."
+    }
+}
+
+Write-Host "`nAll repository push attempts completed." -ForegroundColor Green
+
+
+
+##Indivisual-Jilaneeporfolio
+
+git -C "C:\Jilanee\Github\Personal\Portfolio" add .
+git -C "C:\Jilanee\Github\Personal\Portfolio" commit -m "Update personal project"
+git -C "C:\Jilanee\Github\Personal\Portfolio" push
+
+
+##Indivisual-Jilanee
+git -C "C:\Jilanee\Github\Professional\Portfolio" add .
+git -C "C:\Jilanee\Github\Professional\Portfolio" commit -m "Update professional project"
+git -C "C:\Jilanee\Github\Professional\Portfolio" push

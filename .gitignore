@@ -1,0 +1,49 @@
+﻿# Python environments
+**/venv/
+**/.venv/
+**/env/
+**/ENV/
+
+# Node environments
+**/node_modules/
+
+# Python caches
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.tox/
+**/*.py[cod]
+
+# Jupyter temporary files
+**/.ipynb_checkpoints/
+
+# Tool caches and temporary test repositories
+**/.deepeval/
+**/identity-test/
+
+# Secrets and credentials
+**/.env
+**/.env.*
+!**/.env.example
+**/secrets.json
+**/credentials.json
+**/auth.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+
+# IDE files
+**/.vscode/
+**/.idea/
+
+# Logs and temporary files
+**/*.log
+**/*.tmp
+
+# Build outputs
+**/build/
+**/dist/
+**/.next/
+**/.parcel-cache/
